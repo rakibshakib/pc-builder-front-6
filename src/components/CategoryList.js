@@ -10,9 +10,9 @@ const CategoryList = () => {
           All Categories
         </span>
       </h2>
-      <div className="flex items-center justify-between flex-wrap my-3">
+      <div className="flex md:flex-row sm:flex-col items-center justify-between flex-wrap my-3 px-10">
         {categories.map((ctg) => (
-          <Link key={ctg?.name}  href={ctg?.to}>
+          <Link key={ctg?.name} href={ctg?.to}>
             <div className="w-[120px]  shadow-md hover:shadow-xl rounded-md h-[100px] flex items-center justify-center cursor-pointer">
               <h2 className="text-center text-sm font-semibold">{ctg?.name}</h2>
             </div>

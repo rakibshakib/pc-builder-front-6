@@ -1,12 +1,9 @@
 import RootLayout from "@/components/RootLayout";
 import SelectProductCard from "@/components/SelectProductCard";
 import { fetchDataByCategory } from "@/shared/apiHelper";
-import { useRouter } from "next/router";
 import React from "react";
 
 const SelectPc = ({ products }) => {
-  const router = useRouter();
-  console.log(products);
   return (
     <div className="container mx-auto">
       <h2 className="border-b-2 border-black text-md font-semibold">

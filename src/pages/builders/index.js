@@ -2,6 +2,7 @@ import RootLayout from "@/components/RootLayout";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useStateContext } from "../store/Store";
+import { toast } from "react-toastify";
 
 const PcBuilder = () => {
   const [selected, setSelected] = useState([]);
@@ -17,7 +18,6 @@ const PcBuilder = () => {
   useEffect(() => {
     setSelected(pcBuilderData?.filter((pc) => pc?.item?.productId));
   }, [pcBuilderData]);
-  console.log(selected);
   return (
     <div className="container mx-auto">
       <h2 className="border-b-2 border-black text-sm font-semibold">
@@ -57,7 +57,9 @@ const PcBuilder = () => {
       <div className="mt-4">
         <button
           disabled={selected?.length < 5}
-          onClick={() => console.log("build success")}
+          onClick={() => {
+            return toast.success("Pc Build Success");
+          }}
           className="btn btn-sm hover:bg-black hover:text-white bg-gray-800 text-white w-full"
         >
           Complete Build{" "}

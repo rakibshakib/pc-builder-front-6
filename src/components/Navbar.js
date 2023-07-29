@@ -11,9 +11,10 @@ const Navbar = () => {
     if (session?.user?.email) {
       return router.push(`/builders`);
     }
-    signIn("google", {
-      callbackUrl: "http://localhost:3000",
-    });
+    return router.push(`/login`);
+    // signIn("google", {
+    //   callbackUrl: "http://localhost:3000",
+    // });
   };
   return (
     <div className="navbar bg-base-100">
@@ -60,53 +61,82 @@ const Navbar = () => {
             <li>
               <Link href={`/othersDevice`}>Others</Link>
             </li>
+            <li>
+              {session?.user?.email ? (
+                <li
+                  onClick={() => {
+                    signOut("google", {
+                      callbackUrl: "http://localhost:3000/login",
+                    });
+                  }}
+                >
+                  signOut
+                </li>
+              ) : (
+                <Link href={`/login`}>Login</Link>
+              )}
+            </li>
           </ul>
         </div>
-        <Link href={`/`} className="btn btn-ghost normal-case text-xl">
-          PC Builder Platform
+        <Link
+          href={`/`}
+          className="btn btn-ghost normal-case text-2xl md:text-xl"
+        >
+          PCHUB
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li>
-            <Link href={`/CPU`}>CPU / Processor</Link>
+          <li tabIndex={0}>
+            <details>
+              <summary>Categories </summary>
+              <ul className="p-2">
+                <li>
+                  <Link href={`/CPU`}>CPU / Processor</Link>
+                </li>
+                <li>
+                  <Link href={`/motherboard`}>Motherboard</Link>
+                </li>
+                <li>
+                  <Link href={`/ram`}>RAM</Link>
+                </li>
+                <li>
+                  <Link href={`/powerSupply`}>Power Supply Unit</Link>
+                </li>
+                <li>
+                  <Link href={`/storageAndDevice`}>Storage Device</Link>
+                </li>
+                <li>
+                  <Link href={`/monitor`}>Monitor</Link>
+                </li>
+                <li>
+                  <Link href={`/othersDevice`}>Others</Link>
+                </li>
+              </ul>
+            </details>
           </li>
           <li>
-            <Link href={`/motherboard`}>Motherboard</Link>
-          </li>
-          <li>
-            <Link href={`/ram`}>RAM</Link>
-          </li>
-          <li>
-            <Link href={`/powerSupply`}>Power Supply Unit</Link>
-          </li>
-          <li>
-            <Link href={`/storageAndDevice`}>Storage Device</Link>
-          </li>
-          <li>
-            <Link href={`/monitor`}>Monitor</Link>
-          </li>
-          <li>
-            <Link href={`/othersDevice`}>Others</Link>
+            {session?.user?.email ? (
+              <li
+                onClick={() => {
+                  signOut("google", {
+                    callbackUrl: "http://localhost:3000/login",
+                  });
+                }}
+              >
+                signOut
+              </li>
+            ) : (
+              <Link href={`/login`}>Login</Link>
+            )}
           </li>
         </ul>
       </div>
       <div className="navbar-end">
-        {session?.user?.email ? (
-          <button
-            onClick={() => {
-              signOut();
-            }}
-            className="btn btn-sm"
-          >
-            signOut
-          </button>
-        ) : (
-          <></>
-        )}
-        {/* </Link> */}
-
-        <p onClick={() => handleBuilder()} className="btn btn-sm">
+        <p
+          onClick={() => handleBuilder()}
+          className="btn lg:text-md btn-sm md:text-[12px] sm:text-[10px]"
+        >
           PC Builder
         </p>
       </div>

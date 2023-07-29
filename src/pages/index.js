@@ -4,7 +4,9 @@ import { useStateContext } from "./store/Store";
 import RootLayout from "@/components/RootLayout";
 import ProductList from "@/components/ProductList";
 import CategoryList from "@/components/CategoryList";
-import ProductDetails from "@/components/ProductDetails";
+// import bannerImage from "../asset/bannerBig.jpg";
+// import bannerSm from "../asset/bannerSm1.jpg";
+// import bannerSm2 from "../asset/bannerSm2.jpg";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,11 +15,34 @@ export default function HomePage({ allProducts }) {
 
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
+      className={`flex min-h-screen flex-col items-center justify-between ${inter.className}`}
     >
       <div className="w-full">
-        {/* <ProductDetails /> */}
-        <h2 className="border-b-2 border-black text-md font-semibold">
+        <div className="grid lg:grid-rows-2 md:grid-rows-2 md:grid-flow-col lg:grid-flow-col gap-2 sm:grid-cols-1">
+          <p className="md:row-span-2 md:col-span-2">
+            <img
+              className="object-cover h-full w-full"
+              src="/images/bannerBig.jpg"
+              alt=""
+            />
+          </p>
+          <p>
+            <img
+              className="object-cover h-full w-full"
+              src="/images/bannerSm2.jpg"
+              alt=""
+            />
+          </p>
+          <p>
+            <img
+              className="object-cover h-full w-full"
+              src="/images/bannerSm1.jpg"
+              alt=""
+            />
+          </p>
+        </div>
+
+        <h2 className="border-b-2 border-black text-md font-semibold pt-10">
           <span className="bg-black text-white px-2 inline-block">
             Recent Collections
           </span>
