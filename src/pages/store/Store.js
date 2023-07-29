@@ -1,6 +1,6 @@
 // pages/store/Store.js
 import React, { createContext, useReducer, useContext } from "react";
-import reducer, { initialState } from "./state";
+import reducer, { initialState } from "./State";
 
 const StateContext = createContext();
 
