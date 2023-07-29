@@ -1,10 +1,10 @@
 // pages/store/Store.js
 import React, { createContext, useReducer, useContext } from "react";
-import { initialState, reducer } from "./state";
+import reducer, { initialState } from "./state";
 
 const StateContext = createContext();
 
-export const StateProvider = ({ children }) => {
+const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <StateContext.Provider value={{ state, dispatch }}>
@@ -14,3 +14,5 @@ export const StateProvider = ({ children }) => {
 };
 
 export const useStateContext = () => useContext(StateContext);
+
+export default StateProvider;
