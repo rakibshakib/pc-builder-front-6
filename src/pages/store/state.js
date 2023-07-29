@@ -10,7 +10,7 @@ export const initialState = {
   ],
 };
 
-const reducer = (state, action) => {
+const Reducer = (state, action) => {
   switch (action.type) {
     case "AddToBuilder": {
       const updatedPcBuilderData = [...state.pcBuilderData];
@@ -36,4 +36,4 @@ const reducer = (state, action) => {
       return state;
   }
 };
-export default reducer;
+export default Reducer;
