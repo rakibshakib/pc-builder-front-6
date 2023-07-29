@@ -1,4 +1,4 @@
-import { useStateContext } from "@/pages/store/Store";
+import { useStateContext } from "@/store/Store";
 import { useRouter } from "next/router";
 import React from "react";
 

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import { useStateContext } from "./store/Store";
+import { useStateContext } from "../store/Store";
 import RootLayout from "@/components/RootLayout";
 import ProductList from "@/components/ProductList";
 import CategoryList from "@/components/CategoryList";

@@ -1,7 +1,7 @@
 import RootLayout from "@/components/RootLayout";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { useStateContext } from "../store/Store";
+import { useStateContext } from "../../store/Store";
 import { toast } from "react-toastify";
 
 const PcBuilder = () => {
