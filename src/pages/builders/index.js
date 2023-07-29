@@ -1,18 +1,12 @@
 import RootLayout from "@/components/RootLayout";
 import { useRouter } from "next/router";
-import React from "react";
-
-export const pcBuilderData = [
-  { name: "CPU / Processor", to: "/select-by-category", item: {} },
-  { name: "Motherboard", to: "/select-by-category", item: {} },
-  { name: "RAM", to: "/select-by-category", item: {} },
-  { name: "Power Supply Unit", to: "/select-by-category", item: {} },
-  { name: "Storage Device", to: "/select-by-category", item: {} },
-  { name: "Monitor", to: "/select-by-category", item: {} },
-];
+import React, { useEffect, useState } from "react";
+import { useStateContext } from "../store/Store";
 
 const PcBuilder = () => {
+  const [selected, setSelected] = useState([]);
   const router = useRouter();
+  const { pcBuilderData } = useStateContext()?.state;
 
   const handleClick = (name) => {
     router.push({
@@ -20,7 +14,10 @@ const PcBuilder = () => {
       query: { name },
     });
   };
-  const query = router?.query;
+  useEffect(() => {
+    setSelected(pcBuilderData?.filter((pc) => pc?.item?.productId));
+  }, [pcBuilderData]);
+  console.log(selected);
   return (
     <div className="container mx-auto">
       <h2 className="border-b-2 border-black text-sm font-semibold">
@@ -32,9 +29,22 @@ const PcBuilder = () => {
         {pcBuilderData?.map((data) => (
           <div
             key={data?.name}
-            className="flex justify-between items-center mt-3 h-[80px] px-5 shadow-md"
+            className="flex justify-between items-center mt-5 h-[150px] px-5 shadow-md"
           >
-            <h2>{data?.name}</h2>
+            <div className="w-full">
+              <h2 className="font-bold">{data?.name}</h2>
+              {data?.item?.productId ? (
+                <div className="text-[12px] rounded py-2 px-5 w-3/4 bg-yellow-100">
+                  <p>
+                    <s>Selected</s>
+                  </p>
+                  <h2 className="font-bold">{data?.item?.["Product Name"]}</h2>
+                  <h2>Price: {data?.item?.["Price"]}</h2>
+                </div>
+              ) : (
+                <></>
+              )}
+            </div>
             <button
               onClick={() => handleClick(data.name)}
               className="btn btn-sm"
@@ -43,30 +53,13 @@ const PcBuilder = () => {
             </button>
           </div>
         ))}
-{/* 
-        <div className="flex justify-between items-center mt-3 h-[80px] px-5 shadow-md">
-          <h2>Motherboard</h2>
-          <button className="btn btn-sm">Select</button>
-        </div>
-        <div className="flex justify-between items-center mt-3 h-[80px] px-5 shadow-md">
-          <h2>RAM</h2>
-          <button className="btn btn-sm">Select</button>
-        </div>
-        <div className="flex justify-between items-center mt-3 h-[80px] px-5 shadow-md">
-          <h2>Power Supply Unit</h2>
-          <button className="btn btn-sm">Select</button>
-        </div>
-        <div className="flex justify-between items-center mt-3 h-[80px] px-5 shadow-md">
-          <h2>Storage Device</h2>
-          <button className="btn btn-sm">Select</button>
-        </div>
-        <div className="flex justify-between items-center mt-3 h-[80px] px-5 shadow-md">
-          <h2>Monitor</h2>
-          <button className="btn btn-sm">Select</button>
-        </div> */}
       </div>
       <div className="mt-4">
-        <button className="btn btn-sm hover:bg-black hover:text-white bg-gray-800 text-white w-full">
+        <button
+          disabled={selected?.length < 5}
+          onClick={() => console.log("build success")}
+          className="btn btn-sm hover:bg-black hover:text-white bg-gray-800 text-white w-full"
+        >
           Complete Build{" "}
         </button>
       </div>

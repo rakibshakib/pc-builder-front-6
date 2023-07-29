@@ -1,6 +1,21 @@
+import { useStateContext } from "@/pages/store/Store";
+import { useRouter } from "next/router";
 import React from "react";
 
 const SelectProductCard = ({ product }) => {
+  const { dispatch } = useStateContext();
+  const router = useRouter();
+  const addToBuilderHandler = (product) => {
+    dispatch({
+      type: "AddToBuilder",
+      payload: {
+        name: product?.Category,
+        item: product,
+      },
+    });
+    router.push("/builders");
+  };
+
   return (
     <div className="px-5 py-5 shadow-md mt-4">
       <div className="grid lg:grid-cols-2 md:grid-cols-2 content-start gap-10 sm:grid-cols-1">
@@ -43,7 +58,7 @@ const SelectProductCard = ({ product }) => {
           </div>
           <button
             className="btn btn-sm mt-4 px-5 py-1 text-[12px]"
-            onClick={() => console.log("add to buld")}
+            onClick={() => addToBuilderHandler(product)}
           >
             Add To Builder
           </button>
