@@ -12,10 +12,6 @@ export const initialState = {
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case "INCREMENT":
-      return { ...state, counter: state.counter + 1 };
-    case "DECREMENT":
-      return { ...state, counter: state.counter - 1 };
     case "AddToBuilder": {
       const updatedPcBuilderData = [...state.pcBuilderData];
       const findIndex = updatedPcBuilderData.findIndex(
@@ -36,7 +32,6 @@ export const reducer = (state, action) => {
       }
       return { ...state, pcBuilderData: updatedPcBuilderData };
     }
-
     default:
       return state;
   }

@@ -1,7 +1,20 @@
+import { useSession, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 
 const Navbar = () => {
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  const handleBuilder = () => {
+    if (session?.user?.email) {
+      return router.push(`/builders`);
+    }
+    signIn("google", {
+      callbackUrl: "http://localhost:3000",
+    });
+  };
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -79,9 +92,23 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link href={`/builders`}>
-          <p className="btn btn-sm">PC Builder</p>
-        </Link>
+        {session?.user?.email ? (
+          <button
+            onClick={() => {
+              signOut();
+            }}
+            className="btn btn-sm"
+          >
+            signOut
+          </button>
+        ) : (
+          <></>
+        )}
+        {/* </Link> */}
+
+        <p onClick={() => handleBuilder()} className="btn btn-sm">
+          PC Builder
+        </p>
       </div>
     </div>
   );
