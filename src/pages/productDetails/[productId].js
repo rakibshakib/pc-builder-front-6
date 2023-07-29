@@ -1,5 +1,6 @@
 import ViewProductDetails from "@/components/ProductDetails";
 import RootLayout from "@/components/RootLayout";
+import { useRouter } from "next/router";
 import React from "react";
 
 const ProductDetails = ({ product }) => {

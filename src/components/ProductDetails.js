@@ -34,7 +34,7 @@ const ViewProductDetails = ({ product }) => {
             <h2 className="text-md font-semibold">
               {product?.["Product Name"]}
             </h2>
-            <p>
+            <p className="pt-2">
               <span className="font-semibold">Category:</span>{" "}
               {product?.Category}
             </p>

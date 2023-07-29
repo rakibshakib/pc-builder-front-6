@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import style from "./card.module.css";
+import { useRouter } from "next/router";
 const rating = (stars, range) => "★".repeat(stars).padEnd(range, "✩");
 const Card = ({ propsObj }) => {
   const { product, action } = propsObj;
@@ -42,9 +43,7 @@ const Card = ({ propsObj }) => {
           </p>
         </div>
         <div className={style.cardAction}>
-          <button onClick={action}>
-            See Details
-          </button>
+          <button onClick={action}>See Details</button>
         </div>
       </div>
     </div>

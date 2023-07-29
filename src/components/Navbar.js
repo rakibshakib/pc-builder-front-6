@@ -79,7 +79,9 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn btn-sm">PC Builder</a>
+        <Link href={`/builders`}>
+          <p className="btn btn-sm">PC Builder</p>
+        </Link>
       </div>
     </div>
   );
