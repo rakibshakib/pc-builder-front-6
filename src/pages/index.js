@@ -4,6 +4,7 @@ import { useStateContext } from "./store/Store";
 import RootLayout from "@/components/RootLayout";
 import ProductList from "@/components/ProductList";
 import CategoryList from "@/components/CategoryList";
+import ProductDetails from "@/components/ProductDetails";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,6 +16,7 @@ export default function HomePage({ allProducts }) {
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
     >
       <div className="w-full">
+        {/* <ProductDetails /> */}
         <h2 className="border-b-2 border-black text-md font-semibold">
           <span className="bg-black text-white px-2 inline-block">
             Recent Collections

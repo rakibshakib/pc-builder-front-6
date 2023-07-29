@@ -1,7 +1,9 @@
 import Card from "@/shared/Card";
+import { useRouter } from "next/router";
 import React from "react";
 
 const ProductList = ({ products }) => {
+  const router = useRouter();
   return (
     <div className="">
       <div className="grid lg:grid-cols-3 justify-items-center md:grid-cols-2 content-start gap-10 sm:grid-cols-1">
@@ -12,7 +14,7 @@ const ProductList = ({ products }) => {
               propsObj={{
                 product,
                 action: () => {
-                  console.log(product);
+                  router.push(`/productDetails/${product?.productId}`);
                 },
               }}
             />
