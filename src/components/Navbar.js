@@ -120,7 +120,7 @@ const Navbar = () => {
               <li
                 onClick={() => {
                   signOut("google", {
-                    callbackUrl: "http://localhost:3000/login",
+                    callbackUrl: "https://pc-builder-a62mo0tpz-rakibshakib.vercel.app/login",
                   });
                 }}
               >
