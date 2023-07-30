@@ -14,6 +14,7 @@ const Navbar = () => {
       return router.push(`/login`);
     }
   };
+  console.log({ session });
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -65,7 +66,7 @@ const Navbar = () => {
                   onClick={() => {
                     signOut("google", {
                       callbackUrl:
-                        "https://pc-builder-app-rakibshakib.vercel.app/login",
+                        "https://pc-builder-app-rakibshakib.vercel.app",
                     });
                   }}
                 >
@@ -120,7 +121,7 @@ const Navbar = () => {
                 onClick={() => {
                   signOut("google", {
                     callbackUrl:
-                      "https://pc-builder-app-rakibshakib.vercel.app/login",
+                      "https://pc-builder-app-rakibshakib.vercel.app",
                   });
                 }}
               >
