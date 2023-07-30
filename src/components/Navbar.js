@@ -10,11 +10,9 @@ const Navbar = () => {
   const handleBuilder = () => {
     if (session?.user?.email) {
       return router.push(`/builders`);
+    } else {
+      return router.push(`/login`);
     }
-    return router.push(`/login`);
-    // signIn("google", {
-    //   callbackUrl: "http://localhost:3000",
-    // });
   };
   return (
     <div className="navbar bg-base-100">
@@ -66,7 +64,8 @@ const Navbar = () => {
                 <li
                   onClick={() => {
                     signOut("google", {
-                      callbackUrl: "https://pc-builder-app-rakibshakib.vercel.app/login",
+                      callbackUrl:
+                        "https://pc-builder-app-rakibshakib.vercel.app/login",
                     });
                   }}
                 >
@@ -120,7 +119,8 @@ const Navbar = () => {
               <li
                 onClick={() => {
                   signOut("google", {
-                    callbackUrl: "https://pc-builder-app-rakibshakib.vercel.app/login",
+                    callbackUrl:
+                      "https://pc-builder-app-rakibshakib.vercel.app/login",
                   });
                 }}
               >
