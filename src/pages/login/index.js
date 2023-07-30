@@ -5,7 +5,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 const LoginPages = () => {
   const handleSignIn = () => {
     signIn("google", {
-      callbackUrl: "http://localhost:3000/login",
+      callbackUrl: "https://pc-builder-app-rakibshakib.vercel.app/login",
     });
   };
   return (

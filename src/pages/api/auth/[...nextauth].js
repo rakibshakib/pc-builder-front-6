@@ -1,5 +1,5 @@
-import NextAuth from "next-auth"
-import GoogleProvide from "next-auth/providers/google"
+import NextAuth from "next-auth";
+import GoogleProvide from "next-auth/providers/google";
 
 export const authOptions = {
   providers: [
@@ -8,5 +8,8 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_SECRET,
     }),
   ],
-}
-export default NextAuth(authOptions)
+  pages: {
+    signIn: "https://pc-builder-app-rakibshakib.vercel.app/login",
+  },
+};
+export default NextAuth(authOptions);
