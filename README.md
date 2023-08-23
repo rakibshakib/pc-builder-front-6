@@ -1,3 +1,6 @@
+
+# Simple Next.js Application 
+
 live link:
 ### https://pc-builder-app-rakibshakib.vercel.app/ 
 ## Getting Started
